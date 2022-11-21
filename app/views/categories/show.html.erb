@@ -1,2 +1,8 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<h1>The category of: <strong><%= @category.name %></strong></h1>
+
+<% @paginatable_array.each do |dish| %>
+  <p><%= link_to dish.name, dish %></p>
+  <p><%= image_tag dish.image.variant(resize_to_limit: [285, 285]).processed %></p>
+<% end %>
+<p>There are <%= @paginatable_array.count %> dishes on this page</p>
+<div class = 'smaller'><%= paginate @paginatable_array %></div>

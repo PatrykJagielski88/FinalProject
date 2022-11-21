@@ -8,9 +8,35 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
+    <link rel="stylesheet" href="assets/application.css">
   </head>
 
   <body>
+
+    <section class="section">
+      <div class="container">
+        <h1 class="title is-1">Welcome to Purrrfect cat toys!</h1>
+      </div>
+      <div>
+        <p><%= link_to 'All the products', products_path %></p>
+        <p><%= link_to 'All the categories', categories_path %></p>
+        <%# <p><%= link_to 'About site', "http://127.0.0.1:3000" %></p> %>
+      </div>
+      <%= form_with(url: search_products_path, method: :get, local: true) do %>
+        <div class='field is-grouped mb-5'>
+          <div>
+            <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name",params[:category_id]), include_blank: "All categories"%>
+          </div>
+          <div class='control is-expanded'>
+            <%= text_field_tag(:keywords, nil, class: "input", placeholder: 'Search for dishes' ) %>
+          </div>
+          <div class = 'control'>
+            <%= submit_tag("Search", class: "button is-primary") %>
+          </div>
+        </div>
+      <% end %>
+    </section>
     <%= yield %>
   </body>
 </html>

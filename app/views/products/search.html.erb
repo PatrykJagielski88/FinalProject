@@ -1,0 +1,14 @@
+<p class = 'mb-5'>
+  Products found when searching for: <%= params[:keywords] %>
+</p>
+  <% if @products_s.empty? %>
+    <p>No prodcuts were found, please try again.</p>
+  <% else %>
+    <% @products_s.each do |prod| %>
+    <p><%= link_to prod.name, prod %> category: <%= link_to prod.category.name, prod.category %></p>
+    <p>Price: $<%= prod.price %></p>
+    <p><%= image_tag prod.image.variant(resize_to_limit: [285, 285]).processed %></p>
+    <% end %>
+  <% end %>
+    <p>There are <%= @products_s.count %> products on this page</p>
+<div class = 'smaller'><%= paginate @products_s%></div>

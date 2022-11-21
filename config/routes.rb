@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  # devise_for :users do
+  #   get '/users/sign_out' => 'devise/sessions#destroy'
+  # end
   devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users
+  # devise_for :users
   ActiveAdmin.routes(self)
-  root to: 'products#index'
+
   get 'customers/index'
   get 'customers/show'
   # get 'categories/index'
@@ -26,5 +31,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+
   # Defines the root path route ("/")
+  root to: 'products#index'
 end

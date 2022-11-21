@@ -4,5 +4,5 @@
   <p><%= link_to dish.name, dish %></p>
   <p><%= image_tag dish.image.variant(resize_to_limit: [285, 285]).processed %></p>
 <% end %>
-<p>There are <%= @paginatable_array.count %> dishes on this page</p>
+<p>There are <%= @paginatable_array.count %> products on this page</p>
 <div class = 'smaller'><%= paginate @paginatable_array %></div>

@@ -2,16 +2,12 @@
   <div class="card">
 <h1>Products#index</h1>
 <%# <div class = 'disp'> %>
-      <% @products.each do |product| %>
-
-
-          <p><%= image_tag product.image.variant(resize_to_limit: [285, 285]).processed %></p>
-          <p><%= link_to product.name, product %></p>
-          <p>Price: $<%= product.price %></p>
-
-
-
-    <% end %>
+  <% @products.each do |product| %>
+    <p><%= image_tag product.image.variant(resize_to_limit: [285, 285]).processed %></p>
+    <p><%= link_to product.name, product %></p>
+    <p>Price: $<%= product.price %></p>
+    <p>Description: <%= product.description %></p>
+  <% end %>
 <p>There are <%= @products.count %> products on this site.</p>
   <div class = 'smaller'><%=paginate @products%></div>
   </div>

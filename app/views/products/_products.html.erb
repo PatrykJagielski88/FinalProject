@@ -1,0 +1,28 @@
+<div class="column">
+  <div class="card">
+      <footer class="card-footer">
+        <p class="card-footer-item">
+          Age: <br><%= products.name %>
+        </p>
+        <p class="card-footer-item">
+          Legs: <br><%= products.price %>
+        </p>
+        <p class="card-footer-item">
+          Speed: <br><%= products.description %>
+        </p>
+        <%= hidden_field_tag(:id,product.id) %>
+        <% if cart.include?(products) %>
+          <%= button_to cart_path(products), method: :delete do %>
+            Remove from cart
+          <% end %>
+        <% else %>
+          <%= form_with url: cart_index_path, method: :post do %>
+            <%= hidden_field_tag(:id,products.id) %>
+            <%= button_tag 'Add to cart ✅' %>
+          <% end %>
+        <% end %>
+
+      </footer>
+
+  </div>
+</div>

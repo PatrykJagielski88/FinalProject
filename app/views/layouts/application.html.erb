@@ -54,6 +54,23 @@
         </div>
       <% end %>
     </section>
+          <ul>
+        <li>Cart</li>
+        <% if cart.present? %>
+          <sup><%= cart.size %></sup>
+          <ul>
+            <% cart.each do |product| %>
+              <%= product.name %><%= button_to '➖', cart_path(product.id), method: :delete %>
+            <% end %>
+          </ul>
+        <% end %>
+      </ul>
+      </header>
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
+
+    <%= render partial: 'products/products' %>
     <%= yield %>
   </body>
 </html>

@@ -1,5 +1,4 @@
-<div class="column">
-  <div class="card">
+
 <h1>Products#index</h1>
 <%# <div class = 'disp'> %>
   <% @products.each do |product| %>
@@ -10,5 +9,3 @@
   <% end %>
 <p>There are <%= @products.count %> products on this site.</p>
   <div class = 'smaller'><%=paginate @products%></div>
-  </div>
-</div>

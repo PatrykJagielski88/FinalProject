@@ -45,7 +45,7 @@
             <%= select_tag "category_id", options_from_collection_for_select(Category.all, "id", "name",params[:category_id]), include_blank: "All categories"%>
           </div>
           <div class='control is-expanded'>
-            <%= text_field_tag(:keywords, nil, class: "input", placeholder: 'Search for dishes' ) %>
+            <%= text_field_tag(:keywords, nil, class: "input", placeholder: 'Search for products' ) %>
           </div>
           <div class = 'control'>
             <%= submit_tag("Search", class: "button is-primary") %>
@@ -54,21 +54,22 @@
       <% end %>
     </section>
           <ul>
-        <li>Cart</li>
+
         <% if cart.present? %>
           <sup><%= cart.size %></sup>
+          <li>Cart</li>
           <ul>
             <% cart.each do |product| %>
-              <%= product.name %><%= button_to '➖', cart_path(product.id), method: :delete %>
+              <%= product.name %><%= link_to '➖', cart_path(product.id),data: { turbo_method: :delete }  %>
             <% end %>
           </ul>
         <% end %>
       </ul>
-      </header>
+
       <% if flash[:notice] %>
         <p><%= flash[:notice] %></p>
       <% end %>
-
+<%#
     <%= render partial: 'products/products' %>
     <%= yield %>
   </body>

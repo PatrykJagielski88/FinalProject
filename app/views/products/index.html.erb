@@ -6,6 +6,24 @@
     <p><%= link_to product.name, product %></p>
     <p>Price: $<%= product.price %></p>
     <p>Description: <%= product.description %></p>
-  <% end %>
+
+         <p>
+          <%= hidden_field_tag(:id,product.id) %>
+        <% if cart.include?(product) %>
+          <%= link_to cart_path(product),data: { turbo_method: :delete } do %>
+            Remove from cart
+          <% end %>
+        <% else %>
+          <%= form_with url: cart_index_path, data: { turbo_method: :post }  do %>
+            <%= hidden_field_tag(:id, product.id) %>
+            <p><%= link_to 'Add to cart ✅' %></p>
+          <% end %>
+        <% end %>
+        </p>
+          <% end %>
+
 <p>There are <%= @products.count %> products on this site.</p>
   <div class = 'smaller'><%=paginate @products%></div>
+  <%# <%= render partial: 'products/products',
+             collection: @products,
+             locals: { show_link: false } %> %>

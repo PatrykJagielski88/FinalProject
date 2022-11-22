@@ -12,3 +12,8 @@
   <% end %>
     <p>There are <%= @products_s.count %> products on this page</p>
 <div class = 'smaller'><%= paginate @products_s%></div>
+<%# <div>
+    <%= render partial: 'products/products',
+             collection: @products,
+             locals: { show_link: false } %>
+<%# </div> %> %>

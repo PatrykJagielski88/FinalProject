@@ -2,23 +2,23 @@
   <div class="card">
       <footer class="card-footer">
         <p class="card-footer-item">
-          Age: <br><%= products.name %>
+          <%# Age: <br><%= products.name %> %>
         </p>
         <p class="card-footer-item">
-          Legs: <br><%= products.price %>
+          <%# Legs: <br><%= products.price %> %>
         </p>
         <p class="card-footer-item">
-          Speed: <br><%= products.description %>
+          <%# Speed: <br><%= products.description %> %>
         </p>
-        <%= hidden_field_tag(:id,product.id) %>
+          <%= hidden_field_tag(:id,products.id) %>
         <% if cart.include?(products) %>
-          <%= button_to cart_path(products), method: :delete do %>
+          <%= link_to cart_path(products),data: { turbo_method: :delete } do %>
             Remove from cart
           <% end %>
         <% else %>
-          <%= form_with url: cart_index_path, method: :post do %>
-            <%= hidden_field_tag(:id,products.id) %>
-            <%= button_tag 'Add to cart ✅' %>
+          <%= form_with url: cart_index_path, data: { turbo_method: :post }  do %>
+            <%= hidden_field_tag(:id, products.id) %>
+            <p><%= link_to 'Add to cart ✅' %></p>
           <% end %>
         <% end %>
 

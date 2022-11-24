@@ -1,8 +1,10 @@
 <%= turbo_frame_tag 'cart' do %>
-  <h1>cart</h1>
+  <h1>Your cart</h1>
+<div style="display:flex;justify-content:space-between;margin: 0em 5em;border;">
   <% if @cart.orderables.count > 0 %>
     <%= render 'cart/orderables' %>
-    <p>Total: <%= @cart.total %></p>
+  </div>
+    <strong><p>Grand Total: <%= @cart.total %></p></strong>
     <% else %>
       <p>Your cart is empty</p>
   <% end %>

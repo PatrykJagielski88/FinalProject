@@ -1,0 +1,22 @@
+<% @cart.orderables.each do |orderable| %>
+  <% product = orderable.product %>
+  <div id="<%= "cart-#{product.id}" %>">
+    <p><%= image_tag product.image.variant(resize_to_limit: [285, 285]).processed %></p>
+    <p><%= link_to product.name, product %></p>
+    <p>Price: $<%= product.price %></p>
+    <p>Description: <%= product.description %></p>
+    <%= form_with(url: cart_add_path) do |f| %>
+      <%= f.hidden_field :id,value: product.id %>
+      <%= f.number_field :quantity, value: orderable.quantity, min: 0 %>
+      <%= f.submit 'Update Cart' %>
+    <% end %>
+
+    <%= form_with(url: cart_remove_path) do |f| %>
+      <%= f.hidden_field :id,value: product.id %>
+      <%= f.submit 'X' %>
+    <% end %>
+
+    <strong>Total</strong>
+    <%= orderable.total %>
+  </div>
+<% end %>

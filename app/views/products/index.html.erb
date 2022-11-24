@@ -10,6 +10,8 @@
           <%= f.hidden_field :id,value: product.id %>
           <%= f.number_field :quantity, value: 0, min: 1 %>
           <%= f.submit 'Add to Cart' %>
+          <%= product.id %>
+          <p>here you are</p>
         <% end %>
   <% end %>
 

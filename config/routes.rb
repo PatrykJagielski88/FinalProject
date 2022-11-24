@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :cart, only: %i[create destroy]
+  resources :cart
   # Defines the root path route ("/")
   root to: 'products#index'
 end

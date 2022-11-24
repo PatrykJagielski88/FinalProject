@@ -1,4 +1,7 @@
 class CartController < ApplicationController
+  def show
+    @render_cart = false
+  end
   # def create
   #   logger.debug("Adding #{params[:id]} to cart")
   #   id = params[:id].to_i

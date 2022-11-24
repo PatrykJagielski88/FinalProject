@@ -32,7 +32,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :cart
+  get :cart, to: 'cart#show'
+  post 'cart/add'
+  post 'cart/remove'
   # Defines the root path route ("/")
   root to: 'products#index'
 end

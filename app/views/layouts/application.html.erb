@@ -53,24 +53,12 @@
         </div>
       <% end %>
     </section>
-    <%= render partial: 'cart/cart' if @render_cart %>
-          <%# <ul>
+              <%= render partial: 'cart/cart' if @render_cart %>
 
-        <% if cart.present? %>
-          <%# <sup><%= cart.size </sup> %>
-          <%# <li>Cart</li> %>
-          <%# <ul> %>
-            <%# <% cart.each do |product| %>
-              <%# <%= product.name<%= link_to '➖', cart_path(product.id),data: { turbo_method: :delete }    %>
-            <%# <% end %>
-          <%# </ul> %>
-        <%# <% end %>
-      <%# </ul> %>
+      <%# <% if flash[:notice] %>
+        <%# <p><%= flash[:notice] ></p> %>
+      <%# <% end %>
 
-      <% if flash[:notice] %>
-        <p><%= flash[:notice] %></p>
-      <% end %>
-<%#
     <%= render partial: 'products/products' %>
     <%= yield %>
   </body>

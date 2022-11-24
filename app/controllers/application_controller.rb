@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
+  before_action :set_render_cart
   before_action :initialize_session
   # helper_method :cart
-  before_action :set_render_cart
 
   def set_render_cart
     @render_cart = true

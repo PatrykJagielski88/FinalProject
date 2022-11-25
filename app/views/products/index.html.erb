@@ -11,13 +11,11 @@
     <p>Description: <%= product.description %></p>
     <div style = 'max-width: 800px'>
          <%# <div style = 'max-width: 800px;'> %>
-         <p>
+         <p style='width:50px'>
           <%= form_with(url: cart_add_path) do |f| %>
           <%= f.hidden_field :id,value: product.id %>
-          <%= f.number_field :quantity, value: 0, min: 1 %>
+          <%= f.number_field :quantity,value: 0, min: 1 %>
           <%= f.submit 'Add to Cart' %>
-          <%= product.id %>
-          <p>here you are in index</p>
         <% end %>
         </p>
         <%# </div> %>

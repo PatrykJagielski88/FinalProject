@@ -35,8 +35,9 @@
         <h1 class="title is-1">Welcome to Purrrfect cat toys!</h1>
       </div>
       <div>
-        <p><%= link_to 'All the products', products_path %></p>
+        <p><%= link_to 'All the products', root_path %></p>
         <p><%= link_to 'All the categories', categories_path %></p>
+        <p><%= link_to 'Your cart', cart_path %></p>
       </div>
 
       <%= form_with(url: search_products_path, method: :get, local: true) do %>
@@ -53,8 +54,8 @@
         </div>
       <% end %>
     </section>
-    <%= render partial: 'cart/cart' if @render_cart %>
-
+<%= render partial: 'cart/cart' if @cart.orderables.count > 0 %>
+    <%# <%= render 'products/index' %>
       <%# <% if flash[:notice] %>
         <%# <p><%= flash[:notice] ></p> %>
       <%# <% end %>

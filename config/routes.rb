@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'provinces/index'
   get 'provinces/show'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :products, only: %i[index show] do
+  resources :products, only: %i[show] do
     collection do
       get 'search'
     end

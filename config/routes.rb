@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get 'product_details/show'
   get 'provinces/index'
   get 'provinces/show'
+  get 'checkout', to: 'checkout#show'
+  get 'checkout/success', to: 'checkout#success'
+  get 'billing', to: 'biling#show'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :products, only: %i[show] do
     collection do

@@ -12,4 +12,8 @@
     <strong><p>Grand Total: <%= @cart.total %></p></strong>
   <% end %>
 <% end %>
+    <%# <%= render partial: 'pay/stripe/checkout_button', locals: {
+  session: checkout_path,
+  title: 'Checkout'
+} %>
 </div>

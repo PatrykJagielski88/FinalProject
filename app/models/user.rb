@@ -4,4 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  pay_customer stripe_attributes: :stripe_attributes
+
+  def stripe_attributes(pay_customer)
+    {
+      address: {
+      },
+      metadata: {
+        pay_customer_id: pay_customer.id,
+        user_id: id
+      }
+    }
+  end
 end

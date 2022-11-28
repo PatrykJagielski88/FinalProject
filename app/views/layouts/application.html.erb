@@ -10,6 +10,7 @@
     <%= javascript_importmap_tags %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
     <link rel="stylesheet" href="assets/application.css">
+    <script src="https://js.stripe.com/v3"></script>
   </head>
 
   <body>
@@ -54,7 +55,7 @@
         </div>
       <% end %>
     </section>
-<%= render partial: 'cart/cart' if @cart.orderables.count > 0 %>
+<%= render partial: 'cart/cart' if @cart.orderables.count > 0 && !@checkout_session %>
     <%# <%= render 'products/index' %>
       <%# <% if flash[:notice] %>
         <%# <p><%= flash[:notice] ></p> %>

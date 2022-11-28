@@ -1,6 +1,14 @@
-<h1>checkout</h1>
 
+<div>
+<h1>Your Cart</h1>
+<% @cart.orderables.each do |orderable| %>
+<strong>  <% product = orderable.product %></strong>
+     <strong> <p><%= image_tag product.image.variant(resize_to_limit: [285, 285]).processed %></p></strong>
+<strong>  <p><%= product.name %> * <%= orderable.quantity %> = $<%= product.price.to_i * orderable.quantity %></p></strong>
+<% end %>
+<strong><p>Your total is $<%= @cart.total.to_i %> (taxes calculated on the next page)</p></strong>
 <%= render partial: 'pay/stripe/checkout_button', locals: {
   session: @checkout_session,
-  title: 'Checkout'
+  title: 'Go to pay!'
 } %>
+</div>

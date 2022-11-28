@@ -4,8 +4,7 @@ class CheckoutsController < ApplicationController
   # require 'json'
   # require 'sinatra'
   require 'stripe'
-  def go_to_checkout
-  end
+  def go_to_checkout; end
 
   def show
     # Set your secret key. Remember to switch to your live secret key in production.
@@ -44,7 +43,7 @@ class CheckoutsController < ApplicationController
 
       mode: 'payment',
       # These placeholder URLs will be replaced in a following step.
-      success_url: 'https://example.com/cancel',
+      success_url: 'http://127.0.0.1:3000/checkout/success',
       cancel_url: 'https://example.com/cancel'
     )
     # redirect_to(@checkout_session.url, allow_other_host: true)
@@ -75,5 +74,7 @@ class CheckoutsController < ApplicationController
   # )
   # end
 
-  def success; end
+  def success
+    @success = true
+  end
 end

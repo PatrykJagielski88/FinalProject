@@ -55,7 +55,7 @@
         </div>
       <% end %>
     </section>
-<%= render partial: 'cart/cart' if @cart.orderables.count > 0 && !@checkout_session && @render_cart %>
+<%= render partial: 'cart/cart' if @cart.orderables.count > 0 && !@checkout_session && @render_cart && !@success%>
     <%# <%= render 'products/index' %>
       <%# <% if flash[:notice] %>
         <%# <p><%= flash[:notice] ></p> %>

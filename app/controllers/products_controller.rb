@@ -16,7 +16,5 @@ class ProductsController < ApplicationController
                     Product.page(params[:page]).where('name LIKE ? and category_id LIKE ?', wildcard_search,
                                                       params[:category_id])
                   end
-
-    # @paginatable_array = Kaminari.paginate_array(@category.dishes).page(params[:page]), params[:category_id]
   end
 end

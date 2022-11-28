@@ -55,7 +55,11 @@
         </div>
       <% end %>
     </section>
-<%= render partial: 'cart/cart' if @cart.orderables.count > 0 && !@checkout_session && @render_cart && !@success%>
+    <% if @cart.orderables.count > 0 && !@checkout_session && @render_cart && !@success %>
+      <%= render partial: 'cart/cart' %>
+          <div style = 'text-align: center'><%= button_to "Checkout!", checkout_path, method: :get %></div>
+    <% end %>
+
     <%# <%= render 'products/index' %>
       <%# <% if flash[:notice] %>
         <%# <p><%= flash[:notice] ></p> %>

@@ -7,8 +7,8 @@
 <strong>  <p><%= product.name %> * <%= orderable.quantity %> = $<%= product.price.to_i * orderable.quantity %></p></strong>
 <% end %>
 <strong><p>Your total is $<%= @cart.total.to_i %> (taxes calculated on the next page)</p></strong>
-<%= render partial: 'pay/stripe/checkout_button', locals: {
+<div style = 'text-align: center'><%= render partial: 'pay/stripe/checkout_button', locals: {
   session: @checkout_session,
   title: 'Go to pay!'
-} %>
+} %></div>
 </div>

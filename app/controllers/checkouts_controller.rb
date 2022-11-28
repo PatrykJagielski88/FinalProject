@@ -44,7 +44,7 @@ class CheckoutsController < ApplicationController
       mode: 'payment',
       # These placeholder URLs will be replaced in a following step.
       success_url: 'http://127.0.0.1:3000/checkout/success',
-      cancel_url: 'https://example.com/cancel'
+      cancel_url: 'http://127.0.0.1:3000'
     )
     # redirect_to(@checkout_session.url, allow_other_host: true)
   end

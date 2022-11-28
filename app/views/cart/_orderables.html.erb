@@ -10,8 +10,6 @@
       <%= f.number_field :quantity, value: orderable.quantity, min: 0 %>
       <%= f.submit 'Update Cart' %>
     <% end %>
-        id    <%= product.id %>
-          order  <%= orderable.id %>
     <%= form_with(url: cart_remove_path) do |f| %>
       <%= f.hidden_field :id,value: orderable.id %>
       <%= f.submit 'X' %>

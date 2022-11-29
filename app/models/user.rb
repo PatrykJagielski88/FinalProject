@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   pay_customer stripe_attributes: :stripe_attributes
 
+  belongs_to :province
+
   def stripe_attributes(pay_customer)
     {
       address: {

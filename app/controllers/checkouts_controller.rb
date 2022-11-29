@@ -76,5 +76,20 @@ class CheckoutsController < ApplicationController
 
   def success
     @success = true
+
+    if !current_user.customer.id
+      Customer.create(
+        first_name: current_user.first_name,
+        last_name: current_user.last_name,
+        address: current_user.address,
+        city: current_user.city,
+        province_id: current_user.province_id,
+        user_id: current_user.id
+      )
+    end
+
+    Order.create(
+      customer_id: current_user.customer.id
+    )
   end
 end

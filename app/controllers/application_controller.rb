@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   before_action :initialize_session
   # helper_method :cart
 
+  protect_from_forgery with: :exception
+
+  before_action :update_allowed_parameters, if: :devise_controller?
+
   def set_render_cart
     @render_cart = true
   end
@@ -17,6 +21,13 @@ class ApplicationController < ActionController::Base
       @cart = Cart.create
       session[:cart_id] = @cart.id
     end
+  end
+
+  protected
+
+  def update_allowed_parameters
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:province_id, :email, :password)}
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:province_id, :email, :password, :current_password)}
   end
 
   # def cart

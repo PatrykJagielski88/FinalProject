@@ -9,6 +9,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :province %><br />
+    <%= f.select "province_id", options_from_collection_for_select(Province.all, "id", "name",params[:province_id]) %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>

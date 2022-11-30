@@ -48,31 +48,6 @@ class CheckoutsController < ApplicationController
     # redirect_to(@checkout_session.url, allow_other_host: true)
   end
 
-  # end
-
-  # @products = Product.page(params[:page]).includes(:category).all
-  # prod = @products.find(204)
-  # current_user.set_payment_processor :stripe
-  # current_user.set_payment_processor.customer
-
-  # @checkout_session = current_user
-  #                     .payment_processor
-  #                     .checkout(
-  #                       mode: 'payment',
-  #                       line_items: [
-  #                         price: prod.price
-  #                       ]
-  #                     )
-  # @checkout_session = Stripe::Checkout::Session.create(
-  #   payment_method_types: ['card'],
-  #   success_url: checkout_success_path,
-  #   cancel_url: checkout_cancel_path,
-  #   line_items: [
-  #     price: prod.price
-  #   ]
-  # )
-  # end
-
   def success
     @success = true
 
@@ -87,8 +62,21 @@ class CheckoutsController < ApplicationController
       )
     end
 
-    Order.create(
+    @current_order = Order.create(
       customer_id: current_user.customer.id
     )
+
+    current_user.set_payment_processor :stripe
+    orderables = @cart.orderables.all
+    # @curr_cust_id = Order.where('customer_id = ?', current_user.customer.id).limit(1)
+
+    orderables.each do |order|
+      ProductDetail.create(
+        price_per_one: order.product.price,
+        quantity: order.quantity,
+        product_id: order.product_id,
+        order_id: @current_order.id
+      )
+    end
   end
 end

@@ -22,13 +22,13 @@
     <% end %>
 
     <strong>Total</strong>
-    <%= orderable.total %>
+    <%= number_to_currency(orderable.total.to_i) %>
   </div>
 <% end %>
  </div>
-    <strong><p>Grand Total: <%= @cart.total %></p></strong>
 
+    <strong><p>Grand Total: <%= number_to_currency(@cart.total.to_i) %></p></strong>
 <% end %>
-   <p style = 'text-align: center'><%= button_to "Checkout!", checkout_path, method: :get %></p>
 
+<div style = 'text-align: center'><%= button_to "Checkout!", checkout_path, method: :get %></div>
 </div>

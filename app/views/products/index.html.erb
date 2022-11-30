@@ -7,7 +7,7 @@
     <div><%=  image_tag product.image.variant(resize_to_limit: [285, 285]).processed %></div>
     <div style = 'width: 800px; align-items: center;margin-left:50px'>
     <p><%= link_to product.name, product %></p>
-    <p>Price: $<%= product.price %></p>
+    <p>Price: <%= number_to_currency(product.price.to_i) %></p>
     <p>Description: <%= product.description %></p>
     <div style = 'max-width: 800px'>
          <%# <div style = 'max-width: 800px;'> %>

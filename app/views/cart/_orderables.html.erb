@@ -3,7 +3,7 @@
   <div id="<%= "cart-#{product.id}" %>">
     <p><%= image_tag product.image.variant(resize_to_limit: [285, 285]).processed %></p>
     <p><%= link_to product.name, product %></p>
-    <p>Price: $<%= product.price.to_i %></p>
+    <p>Price: <%= number_to_currency(product.price.to_i) %></p>
     <p>Description: <%= product.description %></p>
     <%= form_with(url: cart_add_path) do |f| %>
       <%= f.hidden_field :id,value: product.id %>

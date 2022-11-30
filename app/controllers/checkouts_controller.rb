@@ -4,7 +4,6 @@ class CheckoutsController < ApplicationController
   # require 'json'
   # require 'sinatra'
   require 'stripe'
-  def go_to_checkout; end
 
   def show
     # Set your secret key. Remember to switch to your live secret key in production.
@@ -77,7 +76,7 @@ class CheckoutsController < ApplicationController
   def success
     @success = true
 
-    if !current_user.customer.id
+    unless current_user.customer.id
       Customer.create(
         first_name: current_user.first_name,
         last_name: current_user.last_name,

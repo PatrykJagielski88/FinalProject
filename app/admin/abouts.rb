@@ -4,7 +4,7 @@ ActiveAdmin.register About do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :about, :edit
+  permit_params :about, :contact
   #
   # or
   #

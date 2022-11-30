@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'checkout/success', to: 'checkouts#success'
   get 'checkout/cancel', to: 'checkouts#cancel'
 
+  get 'about/show'
   get 'billing', to: 'biling#show'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :products, only: %i[show] do

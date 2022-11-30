@@ -15,7 +15,7 @@
       <%= f.submit 'X' %>
     <% end %>
 
-    <strong>Total: $ <%= orderable.total.to_i %></strong>
+    <strong>Total: <%=number_to_currency( orderable.total.to_i) %></strong>
 
   </div>
 <% end %>

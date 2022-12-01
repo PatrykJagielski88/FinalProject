@@ -42,7 +42,7 @@ class CheckoutsController < ApplicationController
 
       mode: 'payment',
       # These placeholder URLs will be replaced in a following step.
-      success_url: 'http://127.0.0.1:3000/checkouts/success',
+      success_url: 'http://127.0.0.1:3000/checkout/success',
       cancel_url: 'http://127.0.0.1:3000'
     )
     # redirect_to(@checkout_session.url, allow_other_host: true)
@@ -98,15 +98,24 @@ class CheckoutsController < ApplicationController
       prod_det.save
     end
 
+    testing = Stripe::Event.list({ limit: 3 })
+
+    puts 'here'
+    puts testing['data'][0]['id']
+
     orderables.each do |to_dest|
       to_dest.destroy
     end
 
     redirect_to root_path
+  end
 
-    testing = Stripe::Event.list({ limit: 3 })
+  def invoice
+    @invoice = true
+    # orderables = @cart.orderables.all
 
-    puts 'here'
-    puts testing['data'][0]['id']
+    # orderables.each do |to_dest|
+    #   to_dest.destroy
+    # end
   end
 end

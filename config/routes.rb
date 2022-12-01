@@ -20,9 +20,10 @@ Rails.application.routes.draw do
   get 'product_details/show'
   get 'provinces/index'
   get 'provinces/show'
-  # resources :checkouts, only: %i[show success]
+
+  get 'checkouts/invoice'
   get 'checkout', to: 'checkouts#show'
-  get 'checkouts/success', to: 'checkouts#success'
+  get 'checkout/success', to: 'checkouts#success'
   get 'checkout/cancel', to: 'checkouts#cancel'
 
   get 'about/show'

@@ -57,12 +57,14 @@
         </div>
       <% end %>
     </section>
-    <% if @cart.orderables.count > 0 && !@checkout_session && @render_cart && !@success && !@about_page %>
-      <%= render partial: 'cart/cart' %>
-          <div style = 'text-align: center'><%= button_to "Checkout!", checkout_path, method: :get %></div>
-    <% end %>
+    <%= turbo_frame_tag 'cart' do %>
+      <% if @cart.orderables.count > 0 && !@checkout_session && @render_cart && !@success && !@about_page && !@invoice %>
+        <%= render partial: 'cart/cart' %>
+
+      <% end %>
     <% if @success %>
       <p>Thank you for your payment!</p>
+    <% end %>
     <% end %>
     <%# <%= render 'products/index' %>
       <%# <% if flash[:notice] %>

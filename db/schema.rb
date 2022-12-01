@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_155245) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_01_163204) do
   create_table "abouts", force: :cascade do |t|
     t.string "about"
     t.datetime "created_at", null: false
@@ -117,6 +117,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_155245) do
     t.string "list_of_products"
     t.float "grand_total"
     t.float "taxes"
+    t.string "stripe_paid_confirmation"
   end
 
   create_table "pay_charges", force: :cascade do |t|

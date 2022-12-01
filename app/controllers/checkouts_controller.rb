@@ -75,11 +75,15 @@ class CheckoutsController < ApplicationController
 
     taxes = (@cart.total * 0.12)
 
+    confirmation = Stripe::Event.list({ limit: 3 })
+    # puts testing['data'][0]['id']
+
     current_order = Order.create(
       customer_id: current_user.customer.id,
       list_of_products: prods,
       grand_total: @cart.total.to_i + taxes,
-      taxes: taxes
+      taxes: taxes,
+      stripe_paid_confirmation: confirmation['data'][0]['id']
     )
 
     current_order.save unless current_order.id
@@ -97,11 +101,6 @@ class CheckoutsController < ApplicationController
 
       prod_det.save
     end
-
-    testing = Stripe::Event.list({ limit: 3 })
-
-    puts 'here'
-    puts testing['data'][0]['id']
 
     orderables.each do |to_dest|
       to_dest.destroy

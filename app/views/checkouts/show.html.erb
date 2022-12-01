@@ -7,7 +7,6 @@
 <strong>  <p><%= product.name %> * <%= orderable.quantity %> = $<%= product.price.to_i * orderable.quantity %></p></strong>
 <% end %>
 <% taxes = (current_user.province.gst + current_user.province.hst + current_user.province.pst) %>
-<%= current_user.province.name %>
   <br/>
   <p>Before Taxes: <%= number_to_currency(@cart.total.to_i) %></p>
 <br/>

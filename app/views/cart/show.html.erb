@@ -26,9 +26,14 @@
   </div>
 <% end %>
  </div>
-
-    <strong><p>Grand Total: <%= number_to_currency(@cart.total.to_i) %></p></strong>
+    <% if @cart.orderables.count > 0  %>
+      <strong><p>Grand Total: <%= number_to_currency(@cart.total.to_i) %></p></strong>
+    <% else %>
+      <strong><p>Your cart is empty!</p></strong>
+    <% end %>
+<% end %>
+<% if @cart.orderables.count > 0 %>
+  <div style = 'text-align: center'><%= button_to "Checkout!", checkout_path, method: :get %></div>
 <% end %>
 
-<div style = 'text-align: center'><%= button_to "Checkout!", checkout_path, method: :get %></div>
 </div>

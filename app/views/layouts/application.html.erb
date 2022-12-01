@@ -40,6 +40,7 @@
         <p><%= link_to 'All the categories', categories_path %></p>
         <p><%= link_to 'Your cart', cart_path %></p>
         <p><%= link_to 'About and contact page', about_show_path %></p>
+        <p><%= link_to 'Order history', orders_path %></p>
       </div>
 
       <%= form_with(url: search_products_path, method: :get, local: true) do %>
@@ -60,7 +61,9 @@
       <%= render partial: 'cart/cart' %>
           <div style = 'text-align: center'><%= button_to "Checkout!", checkout_path, method: :get %></div>
     <% end %>
-
+    <% if @success %>
+      <p>Thank you for your payment!</p>
+    <% end %>
     <%# <%= render 'products/index' %>
       <%# <% if flash[:notice] %>
         <%# <p><%= flash[:notice]</p> %>

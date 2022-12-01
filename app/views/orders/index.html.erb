@@ -1,7 +1,19 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
-    <button
-      class="px-3 py-4 bg-indigo-600 block w-full text-center rounded font-bold text-white shadow-sm"
-    >
-      Subscribe for $90/yr
-    </button>
+<div>
+<%= turbo_frame_tag 'orders' do %>
+  <% some_ord = Order.order('id DESC').where('customer_id = ?', current_user.customer.id) %>
+  <h1>Past Orders for <%= current_user.first_name %> <%= current_user.last_name %> </h1>
+  <br/>
+  <% some_ord.each do |xx| %>
+  <div>
+    <p>Order number: <%= xx.id %></p>
+    <% @details = ProductDetail.where('order_id = ?', xx.id) %>
+    <% @details.each do |det| %>
+    <p>Ordered product: <%= det.product.name %>, price per one: <%= number_to_currency(det.price_per_one.to_i) %>, quantity: <%= det.quantity %></p>
+    <% end %>
+    <p>Grand total: <%= number_to_currency(xx.grand_total) %></p>
+    <p>Taxes paid: <%= number_to_currency(xx.taxes) %></p>
+    </div>
+    <br/>
+  <% end %>
+</div>
+<% end %>

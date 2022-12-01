@@ -1,24 +1,27 @@
-<p>success</p>
-<h1>Thank you for your purchase! :)</h1>
 <div>
-<h1>Checkout</h1>
-<% @cart.orderables.each do |orderable| %>
-<strong>  <% product = orderable.product %></strong>
-     <strong> <p><%= image_tag product.image.variant(resize_to_limit: [285, 285]).processed %></p></strong>
-<strong>  <p><%= product.name %> * <%= orderable.quantity %> = $<%= product.price.to_i * orderable.quantity %></p></strong>
-<% end %>
-<% if current_user.province.name == 'Manitoba' %>
-  <br/>
-  <p>Before Taxes: <%= number_to_currency(@cart.total.to_i) %></p>
-<% end %>
-<br/>
-<p>We will ship it to: </p>
-<p><%= current_user.first_name %> <%= current_user.last_name %></p>
-<p><%= current_user.address %></p>
-<p><%= current_user.province.name %></p>
-<p><%= current_user.city %></p>
-<p>Canada</p>
-<br/>
-<p>Taxes: <%= number_to_currency(taxes = @cart.total.to_i * 0.12) %></p>
-<strong><p>Your total is <%= number_to_currency(taxes + @cart.total.to_i) %></p></strong>
+  <p>Transaction successful</p>
+  <h1>Thank you for your purchase! :)</h1>
+  <div>
+  <% @cart.orderables.each do |orderable| %>
+  <strong>  <% product = orderable.product %></strong>
+      <strong> <p><%= image_tag product.image.variant(resize_to_limit: [285, 285]).processed %></p></strong>
+  <strong>  <p><%= product.name %> * <%= orderable.quantity %> = $<%= product.price.to_i * orderable.quantity %></p></strong>
+  <% end %>
+  <% if current_user.province.name == 'Manitoba' %>
+    <%# <br/> %>
+    <p>Before Taxes: <%= number_to_currency(@cart.total.to_i) %></p>
+  <% end %>
+  <%# <br/> %>
+  <p>We will ship it to: </p>
+  <p><%= current_user.first_name %> <%= current_user.last_name %></p>
+  <p><%= current_user.address %></p>
+  <p><%= current_user.province.name %></p>
+  <p><%= current_user.city %></p>
+  <p>Canada</p>
+  <%# <br/> %>
+  <p>Taxes: <%= number_to_currency(taxes = @cart.total.to_i * 0.12) %></p>
+  <strong><p>Your total is <%= number_to_currency(taxes + @cart.total.to_i) %></p></strong>
+  </div>
+  <p><%= link_to 'Go back to the main page', root_path %></p>
+  <%#  %>
 </div>

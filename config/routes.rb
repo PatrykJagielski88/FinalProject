@@ -15,12 +15,14 @@ Rails.application.routes.draw do
   # get 'products/show'
   get 'orders/index'
   get 'orders/show'
+  resources :orders, only: %i[index]
   get 'product_details/index'
   get 'product_details/show'
   get 'provinces/index'
   get 'provinces/show'
+  # resources :checkouts, only: %i[show success]
   get 'checkout', to: 'checkouts#show'
-  get 'checkout/success', to: 'checkouts#success'
+  get 'checkouts/success', to: 'checkouts#success'
   get 'checkout/cancel', to: 'checkouts#cancel'
 
   get 'about/show'

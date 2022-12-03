@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :email, :province_id, presence: true
+  validates :province_id, numericality: { only_integer: true }
+
   pay_customer stripe_attributes: :stripe_attributes
 
   belongs_to :province

@@ -9,10 +9,10 @@
 
     <%= render 'cart/orderables' %>
   </div>
+ <div style = 'text-align: center'><%= button_to "Checkout!", checkout_path, method: :get %></div>
     <strong><p>Grand Total: <%= number_to_currency(@cart.total.to_i) %></p></strong>
   <% end %>
 <% end %>
- <div style = 'text-align: center'><%= button_to "Checkout!", checkout_path, method: :get %></div>
     <%# <%= render partial: 'pay/stripe/checkout_button', locals: {
   session: checkout_path,
   title: 'Checkout'

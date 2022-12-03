@@ -5,5 +5,8 @@ class Product < ApplicationRecord
   has_one_attached :image
   has_many :orderables
   has_many :carts, through: :orderables
-  validates :name, presence: true
+
+  validates :name, :category_id, :price, :description, presence: true
+  validates :price, numericality: true
+  validates :category_id, numericality: { only_integer: true }
 end

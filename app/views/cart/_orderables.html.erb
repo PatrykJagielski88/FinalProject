@@ -1,7 +1,7 @@
 <% @cart.orderables.each do |orderable| %>
   <% product = orderable.product %>
   <div id="<%= "cart-#{product.id}" %>">
-    <p><%= image_tag product.image.variant(resize_to_limit: [285, 285]).processed %></p>
+    <p><%= image_tag( product.image.variant(resize_to_limit: [285, 285]).processed, alt: 'Sorry no picture...') %></p>
     <p><%= link_to product.name, product %></p>
     <p>Price: <%= number_to_currency(product.price.to_i) %></p>
     <p>Description: <%= product.description %></p>

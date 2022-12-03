@@ -35,6 +35,7 @@ class CheckoutsController < ApplicationController
 
     @checkout_session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
+      customer_email: current_user.email,
       line_items: JSON.parse(str_of_prod), # tutaj jakos naprawic!
       automatic_tax: {
         enabled: true
